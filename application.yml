@@ -1,2 +1,18 @@
-my:
-  test: hello2
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: profiles
+          uri: http://profiles:8081
+          predicates:
+            - Path=/profiles/**
+          filters:
+            - JWTValidationFilter
+            - FRPValidationFilter
+        - id: permissions
+          uri: http://permissions:8082
+          predicates:
+            - Path=/permissions/**
+          filters:
+            - JWTValidationFilter
+            - FRPValidationFilter
