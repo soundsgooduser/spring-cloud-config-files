@@ -9,3 +9,10 @@ spring:
           filters:
             - JWTValidationFilter
             - FRPValidationFilter
+        - id: permissions
+          uri: http://permissions:8082
+          predicates:
+            - Path=/permissions/**
+          filters:
+            - JWTValidationFilter
+            - FRPValidationFilter
